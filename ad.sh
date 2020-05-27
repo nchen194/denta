@@ -9,10 +9,18 @@ else
         cd /etc/smartdns/
         wget https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-smartdns.conf
         cd ~
-        #crontab -l > conf && 
+       if [ -f "/etc/smartdns/anti-ad-smartdns.conf" ];then
+	
+	crontab -l > conf
 	echo -e "00 02 * * * /bin/bash /root/ad.sh" >> conf && crontab conf && rm -f conf
        /sbin/service cron reload
         echo -e "conf-file /etc/smartdns/anti-ad-smartdns.conf" >> /etc/smartdns/smartdns.conf
        systemctl restart smartdns
+       cp /root/denta/ad.sh /root/
+	else
+		clear
+		echo "脚本没有完成请重新下载"
+		cd ~
+	fi
 fi
 
