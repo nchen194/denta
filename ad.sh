@@ -10,8 +10,9 @@ else
         wget https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-smartdns.conf
         cd ~
        if [ -f "/etc/smartdns/anti-ad-smartdns.conf" ];then
-	
 	crontab -l > conf
+	sed -i 's/conf-file /etc/smartdns/anti-ad-smartdns.conf//g' >> /etc/smartdns/smartdns.conf
+	sed -i 's/00 02 * * * /bin/bash /root/ad.sh//g' >> conf && crontab conf
 	echo -e "00 02 * * * /bin/bash /root/ad.sh" >> conf && crontab conf && rm -f conf
        /sbin/service cron reload
         echo -e "conf-file /etc/smartdns/anti-ad-smartdns.conf" >> /etc/smartdns/smartdns.conf
