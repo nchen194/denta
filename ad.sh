@@ -20,7 +20,7 @@ else
        cp /root/denta/ad.sh /root/
 	else
 		clear
-		echo "脚本没有完成请重新下载"
+		echo "脚本没有完成请重新运行"
 		cd ~
 	fi
 fi
