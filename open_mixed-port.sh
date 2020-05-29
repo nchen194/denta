@@ -8,7 +8,8 @@ Font_color_suffix="\033[0m"
 echo && echo -e "
  ${Green_font_prefix}1.${Font_color_suffix} 开启mixed-port
  ${Green_font_prefix}2.${Font_color_suffix} 设置用户名密码
- ${Green_font_prefix}3.${Font_color_suffix} 启本地http代理端口"
+ ${Green_font_prefix}3.${Font_color_suffix} 清除密码
+ ${Green_font_prefix}4.${Font_color_suffix} 启本地http代理端口"
 read -p " 请输入数字 [0-3]:" num
  case "$num" in
 	1)
@@ -30,6 +31,13 @@ read -p " 请输入数字 [0-3]:" num
 		systemctl restart clash@clash.service
 	;;
 	3)
+		clear
+		echo"让你能后悔"
+		sed -i 's/authentication/#/g' /home/clash/.config/clash/config.yaml 
+		systemctl restart clash@clash.service
+		;;
+
+	4)
 	echo "本地http代理端口号："
 	read port
 	echo -e "export http_proxy="http://127.0.0.1:${port}/"" >> /etc/profile
