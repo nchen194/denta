@@ -32,7 +32,7 @@ read -p " 请输入数字 [0-3]:" num
 	3)
 	echo "本地http代理端口号："
 	read port
-	echo -e "export http_proxy=”http://127.0.0.1:${port}/" >> /etc/profile
+	echo -e "export http_proxy="http://127.0.0.1:${port}/"" >> /etc/profile
 	source /etc/profile
 	;;
 	*)
