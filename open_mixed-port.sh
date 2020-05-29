@@ -45,5 +45,5 @@ read -p " 请输入数字 [0-3]:" num
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [1-2]"
+	echo -e "${Error}:请输入正确数字 [1-4]"
 esac
